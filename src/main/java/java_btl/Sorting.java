@@ -73,21 +73,22 @@ public class Sorting {
     public int partition(AnimationQueue animationQueue, MainArray mainArray, int L, int R, int indexPivot) {
         // int pivot = A[indexPivot];
         int pivot = mainArray.get(indexPivot).getKey();
-        animationQueue.add(new Animation("", mainArray.moveIndicatorTo(mainArray.pivotIndicator, indexPivot)));
+        animationQueue.add(new Animation("", mainArray.moveIndicatorTo(mainArray.thirdIndicator, indexPivot)));
         animationQueue.add(new Animation("", mainArray.moveIndicatorTo(mainArray.secondaryIndicator, R)));
         // animationQueue.add(new Animation("",
         // mainArray.moveIndicatorTo(mainArray.pivotIndicator, R-1)));
         // animationQueue.add(new Animation("",
         // mainArray.primaryIndicator.makeAppear()));
-        animationQueue.add(new Animation("", mainArray.pivotIndicator.makeAppear()));
+        animationQueue.add(new Animation("", mainArray.thirdIndicator.makeAppear()));
         animationQueue.add(new Animation("", mainArray.secondaryIndicator.makeAppear()));
-        animationQueue.add(new Animation("", mainArray.moveIndicatorTo(mainArray.primaryIndicator, L)));
+        
         animationQueue.add(new Animation("", mainArray.swap(indexPivot, R)));
-
+        animationQueue.add(new Animation("", mainArray.thirdIndicator.makeDisappear()));
         // swap(A[indexPivot], A[R]);
         int storeIndex = L;
         for (int i = L; i <= R - 1; i++) {
             if (i == L) {
+                animationQueue.add(new Animation("", mainArray.moveIndicatorTo(mainArray.primaryIndicator, L)));
                 animationQueue.add(new Animation("", mainArray.primaryIndicator.makeAppear()));
                 // animationQueue.add(new Animation("", mainArray.secondaryIndicator.makeAppear()));
             }

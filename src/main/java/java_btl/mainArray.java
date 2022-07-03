@@ -17,7 +17,7 @@ public class MainArray extends ArrayList<ArrayNode> {
     public Group renderedArray;
     private double windowWidth, windowHeight;
     private ArrayList<Integer> groupIndexMask;
-    public Indicator primaryIndicator, secondaryIndicator, pivotIndicator;
+    public Indicator primaryIndicator, secondaryIndicator, pivotIndicator, thirdIndicator;
     private Double offset;
 
     public MainArray(ArrayList<Integer> src) {
@@ -29,6 +29,7 @@ public class MainArray extends ArrayList<ArrayNode> {
         this.pivotIndicator = new Indicator(0.8 * this.offset);
         this.pivotIndicator.setFill(Color.BLACK);
         this.groupIndexMask = new ArrayList<Integer>();
+      
         for (int i = 0; i < src.size(); i++) {
             this.add(new ArrayNode(src.get(i)));
             this.groupIndexMask.add(i);
